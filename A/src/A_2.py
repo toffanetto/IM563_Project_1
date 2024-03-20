@@ -7,16 +7,16 @@ def rgb2GsArray(image_array, r, g, b):
     n_rows = np.uint16(image_array.shape[0]) # Number of rows of the image
     n_collumns = np.uint16(image_array.shape[1]) # Number of collumns of the image
 
-    image_reduced = np.zeros([n_rows, n_collumns], dtype=np.uint8) # Empty arraw for the construction of reduced image
+    imageGS = np.zeros([n_rows, n_collumns], dtype=np.uint8) # Empty arraw for the construction of grayscale image
 
     for j in range(n_collumns): # Collumn sweep
         for i in range(n_rows): # Row sweep
         
             intensity = (r/100)*image_array[i, j, 0] + (g/100)*image_array[i, j, 1] + (b/100)*image_array[i, j, 2] # Sum of intensities of RGB Channels
 
-            image_reduced[i, j]  = np.uint8(intensity) # Giver for the GS pixel the respective intensity
+            imageGS[i, j]  = np.uint8(intensity) # Giver for the GS pixel the respective intensity
             
-    return image_reduced
+    return imageGS
 
 # Read image from file
 

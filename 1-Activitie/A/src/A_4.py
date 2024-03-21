@@ -43,7 +43,7 @@ def histogramEqualization(image_array, cumulative_histogram):
     return image_equalized
 # Read image from file
 
-image_raw = iio.imread('A/img/image_GS_1.jpg')
+image_raw = iio.imread('A/img/image_GS_1_scale_equalized.jpg')
 
 print("IMG Tensor size: "+str(image_raw.shape))
 

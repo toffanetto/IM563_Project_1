@@ -4,9 +4,9 @@ import numpy as np
 import imageio.v2 as iio
 import matplotlib.pyplot as plt
 
-BORDER_THRESHOLD = 45
-N_BORDER_SEARCH = 2
-M_BORDER_SEARCH = 2
+BORDER_THRESHOLD = 26
+N_BORDER_SEARCH = 1
+M_BORDER_SEARCH = 1
 
 def borderDetector(image_array):
     n_rows = np.uint16(image_array.shape[0]) # Number of rows of the image
@@ -31,7 +31,7 @@ def borderDetector(image_array):
         print(str(np.uint8(i/n_rows*100))+'% completed')
     return image_borders
 
-image_blur = iio.imread('A/img/image_GS_1_equalized.jpg')
+image_blur = iio.imread('A/img/image_GS_1_blur.jpg')
 
 print("IMG Tensor size: "+str(image_blur.shape))
 

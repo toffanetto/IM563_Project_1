@@ -19,7 +19,7 @@ def blurFilter(image_array):
     image_blurred = np.zeros([n_rows, n_collumns, 3], dtype=np.uint8)
 
     blur_matrix = np.array([[2, 4, 5, 4, 2],
-                            [4, 9, 2, 9, 4],
+                            [4, 9, 12, 9, 4],
                             [5, 12, 15, 12, 5],
                             [4, 9, 12, 9, 4],
                             [2, 4, 5, 4, 2]])/159

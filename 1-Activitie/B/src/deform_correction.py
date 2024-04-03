@@ -1,6 +1,7 @@
 # @toffanetto
 
 import numpy as np
+import math
 import imageio.v2 as iio
 import matplotlib.pyplot as plt
 from scipy import signal
@@ -116,7 +117,45 @@ def findSquares(image_array):
             if(mask_sum/255 == 4):
                 squares.append((j,i))
     return squares
-  
+
+def distortionCorrrection(image_array, K1, K2, P1, P2):
+    n_rows = np.uint16(image_array.shape[0]) # Number of rows of the image
+    n_collumns = np.uint16(image_array.shape[1]) # Number of collumns of the image
+
+    image_correct = np.zeros([n_rows, n_collumns], dtype=np.uint8)
+    
+    xd_ = int((image_array.shape[1])/2)
+    yd_ = int((image_array.shape[0])/2)
+
+    for i in range(n_rows):
+        for j in range(n_collumns):
+            dX = i-xd_
+            dY = j-yd_
+            r2 = (dX)**2 + (dY)**2
+            x1 = dX*r2
+            x2 = dX*(r2**2)
+            x3 = r2 + 2*(dX**2)
+            x4 = dX*dY*2
+            x6 = dY*r2
+            x7 = r2 + 2*(dY**2)
+            x8 = dY*(r2**2)
+            x9 = dX*dY*2
+            
+            xu = int(math.floor(dX + x1*K1 + x2*K2 + x3*P1 + x4*P2))
+            yu = int(math.floor(dY + x6*K1 + x7*K2 + x8*P1 + x9*P2))
+            
+            try:
+                image_correct[i, j] = image_array[xu, yu]
+            except:
+                image_correct[i, j] = 120
+        #print('Undeforming image | '+str(np.uint8(i/n_rows*100))+'% completed')
+        
+        
+    
+    print(xd_)
+    print(yd_)
+
+    return image_correct
 
 ######################
 
@@ -166,8 +205,8 @@ plt.savefig("./B/plot/image_original_binary.pdf", format="pdf", bbox_inches="tig
 Id = []
 Iu = []
 
-xd_ = np.ceil(np.uint16(image_original_binary.shape[1])/2)
-yd_ = np.ceil(np.uint16(image_original_binary.shape[0])/2)
+xd_ = int((image_original_binary.shape[1])/2)
+yd_ = int((image_original_binary.shape[0])/2)
 
 for i in range(len(squares_original)):
     for j in range(len(squares)):
@@ -180,7 +219,8 @@ Id_marker = plt.scatter(*zip(*Id),marker='o')
 Iu_marker = plt.scatter(*zip(*Iu),marker='x')
 Id__marker = plt.scatter(xd_,yd_,marker='+')
 plt.imshow(image_binary_erode, cmap='gray')
-plt.legend((Id_marker, Iu_marker, Id__marker), ('Distorted position point', 'Original position point', 'Image center'),fontsize=8)
+plt.legend((Id_marker, Iu_marker, Id__marker), ('Distorted position point', 
+                                                'Original position point', 'Image center'),fontsize=8)
 plt.ylim([80,320])
 plt.xlabel('x-axis [pixels]')
 plt.ylabel('y-axis [pixels]')
@@ -193,20 +233,65 @@ print(len(Id))
 print(len(squares_original))
 print(len(squares))
 
-K = []
 
 ## FIND THE VALUE OF K AND P
 
-for i in range(len(Id)):
-    K.append((Iu[i][0]/(Id[i][0]-xd_) -1 )/(((Id[i][0]-xd_)**2 + (Id[i][1]-yd_)**2)))
+# Linear system giver by Y = A*w, where:
+#   w = [K1 K2 P1 P2]'
 
-K = np.average(K)
+Y = np.zeros([2*len(Id),1])
+A = np.zeros([2*len(Id),4])
 
-Iu_correct = []
+j = 0
 
+
+for i in range(0,2*len(Id),2):
+    
+    dX = Id[j][0]-xd_
+    dY = Id[j][1]-yd_
+    r2 = (dX)**2 + (dY)**2
+    x0 = Iu[j][0] - dX
+    x1 = dX*r2
+    x2 = dX*r2**2
+    x3 = r2 + 2*(dX**2)
+    x4 = dX*dY*2
+    x5 = Iu[j][1] - dY
+    x6 = dY*r2
+    x7 = r2 + 2*(dY**2)
+    x8 = dY*r2**2
+    x9 = dX*dY*2
+    
+    Y[i,0] = x0
+    Y[i+1,0] = x5
+    A[i,0] = x1
+    A[i,1] = x2
+    A[i,2] = x3
+    A[i,3] = x4
+    A[i+1,0] = x6
+    A[i+1,1] = x7
+    A[i+1,2] = x8
+    A[i+1,3] = x9
+    
+    j += 1
+    
+w = np.linalg.pinv(A).dot(Y)
+
+K1 = w[0][0]
+K2 = w[1][0]
+P1 = w[2][0]
+P2 = w[3][0]
+
+print('K1 = '+str(K1)+'\nK2 = '+str(K2)+'\nP1 = '+str(P1)+'\nP2 = '+str(P2))
+    
+    
 ## COMPUTE THE DISTOTION CORRECTED POINTS
 
-print(Iu_correct)
+image_undistorted = distortionCorrrection(image_array=image_binary_erode, K1=K1, K2=K2, P1=P1, P2=P2)
+
+plt.figure()
+plt.imshow(image_undistorted, cmap='gray')
+
+iio.imwrite('B/img/output/image_undistorted.png', image_undistorted)
 
 # plt.figure()
 # Id_marker = plt.scatter(*zip(*Id),marker='o')
@@ -214,7 +299,8 @@ print(Iu_correct)
 # plt.scatter(*zip(*Iu_correct),marker='+')
 # Id__marker = plt.scatter(xd_,yd_,marker='+')
 # plt.imshow(image_binary_erode, cmap='gray')
-# plt.legend((Id_marker, Iu_marker, Id__marker), ('Distorted position point', 'Original position point', 'Image center'),fontsize=8)
+# plt.legend((Id_marker, Iu_marker, Id__marker), ('Distorted position point', 
+#                                                 'Original position point', 'Image center'),fontsize=8)
 # plt.ylim([80,320])
 # plt.xlabel('x-axis [pixels]')
 # plt.ylabel('y-axis [pixels]')
@@ -224,5 +310,6 @@ print(Iu_correct)
 
 ## COMPUTE THE DISTOTION CORRECTED IMAGE
 
-plt.show()
 
+
+plt.show()

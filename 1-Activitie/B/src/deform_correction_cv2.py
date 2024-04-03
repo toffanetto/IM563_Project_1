@@ -12,7 +12,7 @@ objp[:, :2] = np.indices(chessboard_size).T.reshape(-1, 2)
 
 object_points = []
 image_points = []
-image_file = './B/img/chess.jpeg'
+image_file = './B/img/output/image_binary_erode.png'
 
 # Load and process each image
 image = cv2.imread(image_file)

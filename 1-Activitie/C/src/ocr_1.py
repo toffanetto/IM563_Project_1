@@ -92,9 +92,7 @@ try:
 except:
     image_raw = iio.imread('C/img/text_cutted.jpg')
 
-    image_reduced = imageArrayReduce(image_raw, 50)
-
-    image_gs = rgb2GsArray(image_reduced, 30, 55, 15)
+    image_gs = rgb2GsArray(image_raw, 30, 55, 15)
 
     iio.imwrite('C/img/output/image_gs.png', image_gs)
 
@@ -111,15 +109,13 @@ image_letter_label_color = ski.color.label2rgb(image_letter_label, bg_label=0)
 
 plt.figure()
 plt.imshow(image_letter_label_color)
-plt.title('145/152 words founded')
+plt.title(str(letters_count)+'/152 words founded')
 plt.savefig("./C/plot/image_letter_label_color_1.pdf", format="pdf", bbox_inches="tight")
-
-# iio.imwrite('C/img/output/image_binary_erode.png', image_binary_erode)
 
 print(letters_count)
 
-object_features = ski.measure.regionprops(image_letter_label)
-object_areas = [objf["area"] for objf in object_features]
-print(object_areas)
+# object_features = ski.measure.regionprops(image_letter_label)
+# object_areas = [objf["area"] for objf in object_features]
+# print(object_areas)
 
 plt.show()

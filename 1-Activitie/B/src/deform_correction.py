@@ -282,10 +282,10 @@ print('K1 = '+str(K1)+'\nK2 = '+str(K2)+'\nP1 = '+str(P1)+'\nP2 = '+str(P2))
 
 image_undistorted = distortionCorrrection(image_array=image_binary_erode, K1=K1, K2=K2, P1=P1, P2=P2)
 
-plt.figure()
-plt.imshow(image_undistorted, cmap='gray')
+# plt.figure()
+# plt.imshow(image_undistorted, cmap='gray')
 
-iio.imwrite('B/img/output/image_undistorted.png', image_undistorted)
+# iio.imwrite('B/img/output/image_undistorted.png', image_undistorted)
 
 
 plt.show()

@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 import os
 import glob
+import matplotlib.pyplot as plt
 
 chessboard_size = (7,7)
 
@@ -42,8 +43,11 @@ print("Distortion:", dist.ravel())
 test_image = cv2.imread(image_file)
 # Correct the image distortion
 undistorted_image = cv2.undistort(test_image, K, dist, None, K)
+
 # Display the original and corrected image side by side
 combined_image = np.hstack((test_image, undistorted_image))
 cv2.imshow('Original vs Undistorted', combined_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+plt.show()

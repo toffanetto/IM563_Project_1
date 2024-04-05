@@ -88,22 +88,24 @@ def erodeImage(image_array):
 ######################
 
 try:
-    image_gs = iio.imread('C/img/output/image_gs.png')
+    image_gs = iio.imread('C/img/output/image_gs2.png')
 except:
-    image_raw = iio.imread('C/img/text_cutted.jpg')
+    image_raw = iio.imread('C/img/loren.jpg')
 
     image_reduced = imageArrayReduce(image_raw, 50)
 
     image_gs = rgb2GsArray(image_reduced, 30, 55, 15)
 
-    iio.imwrite('C/img/output/image_gs.png', image_gs)
+    iio.imwrite('C/img/output/image_gs2.png', image_gs)
 
 image_binary = binaryImage(image_gs)
 
 plt.figure()
 plt.imshow(image_binary, cmap='gray')
 
-iio.imwrite('C/img/output/image_binary.png', image_binary)
+iio.imwrite('C/img/output/image_binary2.png', image_binary)
+
+
 
 image_letter_label, letters_count = ski.measure.label(image_binary, connectivity=1, return_num=True)
 
@@ -111,8 +113,8 @@ image_letter_label_color = ski.color.label2rgb(image_letter_label, bg_label=0)
 
 plt.figure()
 plt.imshow(image_letter_label_color)
-plt.title('145/152 words founded')
-plt.savefig("./C/plot/image_letter_label_color_1.pdf", format="pdf", bbox_inches="tight")
+plt.title(str(letters_count)+'/105 words founded')
+plt.savefig("./C/plot/image_letter_label_color_2.pdf", format="pdf", bbox_inches="tight")
 
 # iio.imwrite('C/img/output/image_binary_erode.png', image_binary_erode)
 
@@ -121,5 +123,14 @@ print(letters_count)
 object_features = ski.measure.regionprops(image_letter_label)
 object_areas = [objf["area"] for objf in object_features]
 print(object_areas)
+
+count = sum(1 for i in object_areas if i > 9)
+
+print('count = '+str(count))
+
+plt.figure()
+plt.imshow(image_letter_label_color)
+plt.title(str(count)+'/105 words founded')
+plt.savefig("./C/plot/image_letter_label_color_3.pdf", format="pdf", bbox_inches="tight")
 
 plt.show()

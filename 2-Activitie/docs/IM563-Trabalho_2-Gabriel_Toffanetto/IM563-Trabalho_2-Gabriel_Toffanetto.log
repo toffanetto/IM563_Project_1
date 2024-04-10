@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.27)  10 APR 2024 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.27)  10 APR 2024 16:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -704,13 +704,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 )
 (./IM563-Trabalho_2-Gabriel_Toffanetto.aux (./corpo.aux
 
-LaTeX Warning: Label `key' multiply defined.
-
-
-LaTeX Warning: Label `key' multiply defined.
-
-
-LaTeX Warning: Label `key' multiply defined.
+LaTeX Warning: Label `eq:repp1' multiply defined.
 
 ) (./anexos.aux))
 \openout1 = `IM563-Trabalho_2-Gabriel_Toffanetto.aux'.
@@ -916,13 +910,13 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `IM563-Trabalho_2-Gabriel_Toffanetto.out' has
  not changed.
-(rerunfilecheck)             Checksum: 4E7AF8FF288378C3ED1BAE52D4112B69;422.
+(rerunfilecheck)             Checksum: EEE31F566146FA1D715A8323C184D915;422.
  ) 
 Here is how much of TeX's memory you used:
- 18626 strings out of 480186
- 310022 string characters out of 5894355
- 979461 words of memory out of 5000000
- 36160 multiletter control sequences out of 15000+600000
+ 18634 strings out of 480186
+ 310113 string characters out of 5894355
+ 979604 words of memory out of 5000000
+ 36165 multiletter control sequences out of 15000+600000
  484955 words of font info for 67 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
  109i,14n,106p,392b,1333s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -939,18 +933,20 @@ mf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk> </home/toffanetto/.texlive20
 live2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/toffanett
 o/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb>
-Output written on IM563-Trabalho_2-Gabriel_Toffanetto.pdf (9 pages, 3854485 byt
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+>
+Output written on IM563-Trabalho_2-Gabriel_Toffanetto.pdf (9 pages, 3873753 byt
 es).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
+ 541 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
  94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

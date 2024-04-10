@@ -4,5 +4,5 @@
 \contentsline {section}{\numberline {3}C}{7}{section.3}%
 \contentsline {section}{\numberline {4}D}{7}{section.4}%
 \contentsline {section}{\numberline {5}E}{8}{section.5}%
-\contentsline {section}{Anexos}{9}{equation.5.17}%
-\contentsline {section}{Referências}{9}{equation.5.17}%
+\contentsline {section}{Anexos}{9}{equation.5.20}%
+\contentsline {section}{Referências}{9}{equation.5.20}%

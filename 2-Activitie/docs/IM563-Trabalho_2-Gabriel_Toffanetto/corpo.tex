@@ -108,7 +108,7 @@ Sendo $f = 0,05$ m, têm-se que:
 A projeção no plano da imagem é representadas em unidades métricas, não sendo essa a representação final da imagem capturada em termos da imagem em si. A projeção da imagem pode ser transformada para coordenadas de imagem, por meio de \eqref{eq:image}.
 
 \begin{equation}\label{eq:image}
-	\hat{\+q} = \texttt{floor}\left(\frac{1}{f}\+A\+q\right)
+	\widehat{\+q} = \texttt{floor}\left(\frac{1}{f}\+A\+q\right)
 \end{equation}
 
 Sendo a matriz de parâmetros intrínsecos ($\+A$) dada por \eqref{eq:A}.
@@ -130,15 +130,15 @@ Onde tem-se que:
 	v_0 &= 0 
 \end{align}
 
-Dessa forma, obtém-se $\hat{\+q}_1$ e $\hat{\+q}_1$:
+Dessa forma, obtém-se $\widehat{\+q}_1$ e $\widehat{\+q}_1$:
 
 \begin{align}
-	\hat{\+q}_1 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_1\right) = \begin{bmatrix}
+	\widehat{\+q}_1 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_1\right) = \begin{bmatrix}
 		27\\
 		69\\
 		1
 	\end{bmatrix}  \text{ (pixel)}\\
-	\hat{\+q}_2 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_2\right)  = \begin{bmatrix}
+	\widehat{\+q}_2 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_2\right)  = \begin{bmatrix}
 		9\\
 		23\\
 		1
@@ -148,15 +148,46 @@ Dessa forma, obtém-se $\hat{\+q}_1$ e $\hat{\+q}_1$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{E}
 
-\begin{equation}\label{key}
+Relacionando o ponto no mundo com sua projeção no plano da imagem, como feito em \eqref{eq:pq}, pode-se substituir o ponto projetado para obter diretamente a coordenada do mundo em coordenadas de imagem, como em \eqref{eq:qqhat}.
+
+Isolando $\+p$ em \eqref{eq:qqhat}, obtém-se em \eqref{eq:pqqhat} a transformação de reprojeção, do ponto em coordenadas de imagem para coordenadas do mundo.
+
+\begin{equation}\label{eq:pq}
 	\+q = \frac{f}{p_z}\+p 
 \end{equation}
 
-\begin{equation}\label{key}
-	\hat{\+q} = \frac{1}{f}\+A \+q  = \frac{1}{f}\+A\frac{f}{p_z}\+p  = \frac{1}{p_z}\+A\+p 
+\begin{equation}\label{eq:qqhat}
+	\widehat{\+q} = \frac{1}{f}\+A \+q  = \frac{1}{f}\+A\frac{f}{p_z}\+p  = \frac{1}{p_z}\+A\+p 
 \end{equation}
 
-\begin{equation}\label{key}
-	\+p = \+A^{-1}\hat{\+q}p_z
+\begin{equation}\label{eq:pqqhat}
+	\widehat{\+p} = \+A^{-1}\widehat{\+q}p_z
 \end{equation}
 
+Sendo $\widehat{\+p}$ o ponto reprojetado.
+
+Dessa forma, foi possível reprojetar os pontos $\+p_1$ e $\+p_2$, obtendo os resultados abaixo:
+
+\begin{equation}\label{eq:repp1}
+	\widehat{\+p}_1 = \+A^{-1}\widehat{\+q_1}p_{1_z} = \begin{bmatrix}
+		0.972\\
+		  1.987\\
+		   3
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{eq:repp1}
+	\widehat{\+p}_2 = \+A^{-1}\widehat{\+q_2}p_{2_z} = \begin{bmatrix}
+	1.938 \\
+	 3.962 \\
+	 17.945
+\end{bmatrix}
+\end{equation}
+
+O erro de reprojeção foi calculado com base na média da distância euclidiana do vetor erro de reprojeção, dendo dado por \eqref{eq:errormean}.
+
+\begin{equation}\label{eq:errormean}
+	e = \frac{1}{N}\sum_{i=1}^{N}||\+{e_i}||_2 = \frac{1}{N}\sum_{i=1}^{N}||\+p_i - \widehat{\+p_i}||_2
+\end{equation}
+
+Para os pontos recuperados, o erro médio foi de 0,083.

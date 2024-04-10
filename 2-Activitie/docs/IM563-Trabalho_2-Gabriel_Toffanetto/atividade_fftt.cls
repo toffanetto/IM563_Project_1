@@ -83,25 +83,25 @@
 \definecolor{backcolour}{rgb}{0.95,1,0.95}
 
 \lstdefinestyle{default}{
-	backgroundcolor=\color{backcolour},   
-	commentstyle=\color{codegreen},
-	keywordstyle=\color{magenta},
-	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codepurple},
-	basicstyle=\ttfamily\footnotesize,
-	breakatwhitespace=false,         
-	breaklines=true,                 
-	captionpos=b,                    
-	keepspaces=true,                 
-	numbers=left,                    
-	numbersep=5pt,                  
-	showspaces=false,                
-	showstringspaces=false,
-	showtabs=false,                  
-	tabsize=2,
-	inputencoding=utf8,
-	extendedchars=true,    
-	literate={á}{{\'a}}1 {Á}{{\'A}}1 {ã}{{\~a}}1 {â}{{\^{a}}}1 {Â}{{\^{A}}}1 {Ã}{{\~A}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {É}{{\'E}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {í}{{\'i}}1 {ó}{{\'o}}1,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    inputencoding=utf8,
+    extendedchars=true,    
+    literate={á}{{\'a}}1 {Á}{{\'A}}1 {ã}{{\~a}}1 {â}{{\^{a}}}1 {Â}{{\^{A}}}1 {Ã}{{\~A}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {É}{{\'E}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {í}{{\'i}}1 {ó}{{\'o}}1,
 }
 \lstset{style=default}
 
@@ -119,19 +119,19 @@
 \makeatother
 
 \makeatletter
-\renewcommand*{\ps@plain}{%
-	\let\@mkboth\@gobbletwo
-	\let\@oddhead\@empty
-	\def\@oddfoot{%
-		\reset@font
-		\footnotesize{\Autor} % commented in case of more than one author
-		\hfil
-		\normalsize{\thepage}
-		% \hfil % removed for aligning to the right
-	}%
-	\let\@evenhead\@empty
-	\let\@evenfoot\@oddfoot
-}
+    \renewcommand*{\ps@plain}{%
+      \let\@mkboth\@gobbletwo
+      \let\@oddhead\@empty
+      \def\@oddfoot{%
+        \reset@font
+        \footnotesize{\Autor} % commented in case of more than one author
+        \hfil
+        \normalsize{\thepage}
+        % \hfil % removed for aligning to the right
+      }%
+      \let\@evenhead\@empty
+      \let\@evenfoot\@oddfoot
+    }
 \makeatother
 
 \geometry{top=2cm, bottom=2cm, right=2cm, left=2cm}
@@ -142,209 +142,209 @@
 
 % \header
 \newcommand{\header}{ 
-	\pagestyle{fancy}
-	\fancyhf{}
-	\fancyhead[L]{\footnotesize{\TituloShort}}
-	\fancyhead[C]{\footnotesize{Universidade Estadual de Campinas}}
-	\fancyhead[R]{\footnotesize{\DisciplinaCOD}}
-}
-
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\footnotesize{\TituloShort}}
+    \fancyhead[C]{\footnotesize{Universidade Estadual de Campinas}}
+    \fancyhead[R]{\footnotesize{\DisciplinaCOD}}
+    }
+    
 % \removeheader
 \newcommand{\removeheader}{ 
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-}
-
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    }
+    
 % \footer
 \newcommand{\footer}{ 
-	\fancyfoot[R]{\thepage}
-}
-
+    \fancyfoot[R]{\thepage}
+    }
+    
 % \footerauthor
 \newcommand{\footerauthor}{ 
-	\fancyfoot[R]{\thepage}
-	\fancyfoot[L]{\footnotesize{\Autor}}
-}
-
+    \fancyfoot[R]{\thepage}
+    \fancyfoot[L]{\footnotesize{\Autor}}
+    }
+    
 % \cabecalho
 \newcommand{\cabecalho}{ 
-	\thispagestyle{empty}
-	\header
-	\footer
-	
-	\begin{picture}(50,50)      %logo UNICAMP
-		\put(200,-30){
-			\hbox{\includegraphics[scale=.25]{img/logo_unicamp.pdf}}
-		}
-	\end{picture}
-	
-	\vspace{1cm}
-	
-	\center{\large{Universidade Estadual de Campinas}} 
-	\center{\Faculdade}
-	\justify
-	\noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
-	
-	\noindent Docente: \Professor \\  %professor
-	
-	\noindent Discentes:        %autores
-}
+    \thispagestyle{empty}
+    \header
+    \footer
+    
+    \begin{picture}(50,50)      %logo UNICAMP
+        \put(200,-30){
+        	\hbox{\includegraphics[scale=.25]{img/logo_unicamp.pdf}}
+    }
+    \end{picture}
 
+    \vspace{1cm}
+    
+    \center{\large{Universidade Estadual de Campinas}} 
+    \center{\Faculdade}
+    \justify
+     \noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
+    
+    \noindent Docente: \Professor \\  %professor
+    
+    \noindent Discentes:        %autores
+    }
+  
 % \cabecalholite  
 \newcommand{\cabecalholite}{ 
-	\thispagestyle{empty}
-	\header
-	\footer
-	
-	\center{\Large{Universidade Estadual de Campinas}}
-	\center{\Faculdade}
-	\justify
-	\noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
-	\noindent Docente \Professor \\  %professor
-	\noindent Discentes:        %autores
-}
+    \thispagestyle{empty}
+    \header
+    \footer
+    
+    \center{\Large{Universidade Estadual de Campinas}}
+    \center{\Faculdade}
+    \justify
+    \noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
+    \noindent Docente \Professor \\  %professor
+    \noindent Discentes:        %autores
+    }
 
 % \cabecalhoalone
 \newcommand{\cabecalhoalone}{ 
-	\thispagestyle{empty}
-	\header
-	\footerauthor
-	
-	\begin{picture}(50,50)      %logo UNICAMP
-		\put(200,-30){
-			\hbox{\includegraphics[scale=.25]{img/logo_unicamp.pdf}}
-		}
-	\end{picture}
-	
-	\vspace{1cm}
-	
-	\center{\large{Universidade Estadual de Campinas}}
-	\center{\Faculdade}
-	\justify
-	\noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
-	
-	\noindent Docentes: \Professor \\  %professor
-	
-	\noindent Discente:        %autores
-}
+    \thispagestyle{empty}
+    \header
+    \footerauthor
+    
+    \begin{picture}(50,50)      %logo UNICAMP
+        \put(200,-30){
+        	\hbox{\includegraphics[scale=.25]{img/logo_unicamp.pdf}}
+    }
+    \end{picture}
 
+    \vspace{1cm}
+    
+    \center{\large{Universidade Estadual de Campinas}}
+    \center{\Faculdade}
+    \justify
+     \noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
+    
+    \noindent Docentes: \Professor \\  %professor
+    
+    \noindent Discente:        %autores
+    }
+    
 % \cabecalholitealone
 \newcommand{\cabecalholitealone}{ 
-	\thispagestyle{empty}
-	\header
-	\footerauthor
-	
-	\center{\Large{Universidade Estadual de Campinas}}
-	\center{\Faculdade}
-	\justify
-	\noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
-	\noindent Docente: \Professor \\  %professor
-	\noindent Discente:        %autores
-}
-
+    \thispagestyle{empty}
+    \header
+    \footerauthor
+    
+    \center{\Large{Universidade Estadual de Campinas}}
+    \center{\Faculdade}
+    \justify
+     \noindent \textbf{\DisciplinaCOD \space -- \Disciplina}    \hfill \today \\    %disciplina \\ data
+    \noindent Docente: \Professor \\  %professor
+    \noindent Discente:        %autores
+    }
+    
 % \titulo
 \newcommand{\titulo}{
-	\vspace{.5cm}
-	
-	\center{\huge{\Titulo}}       %titulo
-	\vspace{.3cm}
-	\noindent\rule{\textwidth}{0.2pt}
-	\justify
+    \vspace{.5cm}
+
+    \center{\huge{\Titulo}}       %titulo
+    \vspace{.3cm}
+    \noindent\rule{\textwidth}{0.2pt}
+    \justify
 }
 
 % \titulolite
 \newcommand{\titulolite}{
-	
-	\center{\LARGE{\Titulo}}       %titulo
-	\noindent\rule{\textwidth}{0.2pt}
-	\justify
+
+    \center{\LARGE{\Titulo}}       %titulo
+    \noindent\rule{\textwidth}{0.2pt}
+    \justify
 }
 
 % \sumario
 \newcommand{\sumario}{
-	\tableofcontents            % SUMARIO 
-	\vspace{.3cm}
-	\noindent\rule{\textwidth}{0.2pt}
+    \tableofcontents            % SUMARIO 
+    \vspace{.3cm}
+    \noindent\rule{\textwidth}{0.2pt}
 }
 
 % \bibliografia
 \newcommand{\bibliografia}{
-	\clearpage
-	\addcontentsline{toc}{section}{Referências} % para mostrar as referências no sumário
-	\thispagestyle{plain}
-	\bibliography{references.bib}
+    \clearpage
+    \addcontentsline{toc}{section}{Referências} % para mostrar as referências no sumário
+    \thispagestyle{plain}
+    \bibliography{references.bib}
 }
 
 % \bibliografia in text
 \newcommand{\bibliografiaintext}{
-	\addcontentsline{toc}{section}{Referências} % para mostrar as referências no sumário
-	\bibliography{references.bib}
+    \addcontentsline{toc}{section}{Referências} % para mostrar as referências no sumário
+    \bibliography{references.bib}
 }
 
 % \corpo
 \newcommand{\corpo}{
-	\include{corpo}
+    \include{corpo}
 }
 
 % \autor
 \newcommand{\autor}[1][\Autor]{
-	\begin{itemize}
-		\item #1
-	\end{itemize}
+    \begin{itemize}
+        \item #1
+    \end{itemize}
 }
 
 % \espacamentoumemeio
 \newcommand{\espacamentoumemeio}{
-	\onehalfspacing
+    \onehalfspacing
 }
 
 % \timesneweoman
 \newcommand{\timesnewroman}{
-	\usepackage{mathptmx} % Times New Roman
+    \usepackage{mathptmx} % Times New Roman
 }
 
 % \arial
 \newcommand{\arial}{
-	\usepackage{helvet}   % Arial
+    \usepackage{helvet}   % Arial
 }
 
 % \latinmodern
 \newcommand{\latinmodern}{
-	\usepackage{lmodern}	% Latin Modern
+    \usepackage{lmodern}	% Latin Modern
 }
 
 % \tracolista
 \newcommand{\tracolista}{
-	\def\labelitemi{--}     % usa caracter no itemize
+    \def\labelitemi{--}     % usa caracter no itemize
 }
 
 
 \newcommand{\colunadivisao}{
-	\setlength{\columnseprule}{.5pt}
-	\def\columnseprulecolor{\color{black}}      % linha vertical para dividir as colunas
+    \setlength{\columnseprule}{.5pt}
+    \def\columnseprulecolor{\color{black}}      % linha vertical para dividir as colunas
 }
 
 
 \newcommand{\pdfconfig}{
-	\hypersetup{
-		%pagebackref=true,
+    \hypersetup{
+     	%pagebackref=true,
 		pdftitle={\Titulo}, 
 		pdfauthor={\Autor},
-		pdfsubject={\Disciplina},
-		pdfcreator={LaTeX with Overleaf},
+    	pdfsubject={\Disciplina},
+	    pdfcreator={LaTeX with Overleaf},
 		pdfkeywords={atividade_fftt}, 
 		colorlinks=true,       		        % false: boxed links; true: colored links
-		linkcolor=black,          	        % color of internal links
-		citecolor=black,        	        % color of links to bibliography
-		filecolor=black,      	        % color of file links
+    	linkcolor=black,          	        % color of internal links
+    	citecolor=black,        	        % color of links to bibliography
+    	filecolor=black,      	        % color of file links
 		urlcolor=black,
 		bookmarksdepth=4
-	}
+}
 }
 
 % \anexos
 \newcommand{\anexos}{
-	\clearpage
-	\include{anexos}
+    \clearpage
+    \include{anexos}
 }
 

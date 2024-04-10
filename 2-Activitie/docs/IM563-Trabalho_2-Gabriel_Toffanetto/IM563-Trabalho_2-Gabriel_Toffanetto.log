@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.27)  10 APR 2024 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.27)  10 APR 2024 13:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,41 +836,37 @@ nclusion: found PDF version <1.7>, but at most version <1.5> allowed
 File: img/A/RodriguesRotation-1.pdf Graphic file (type pdf)
 <use img/A/RodriguesRotation-1.pdf>
 Package pdftex.def Info: img/A/RodriguesRotation-1.pdf  used on input line 7.
-(pdftex.def)             Requested size: 483.69687pt x 683.64641pt.
-[2
+(pdftex.def)             Requested size: 478.86255pt x 676.81474pt.
 
-]
-Overfull \vbox (5.28548pt too high) has occurred while \output is active []
-
-
-[3 <./img/A/RodriguesRotation-1.pdf>]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./img/A/RodriguesRotation-2.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/A/RodriguesRotation-2.pdf, id=77, 602.25pt x 851.18pt>
+<img/A/RodriguesRotation-2.pdf, id=63, 602.25pt x 851.18pt>
 File: img/A/RodriguesRotation-2.pdf Graphic file (type pdf)
 <use img/A/RodriguesRotation-2.pdf>
 Package pdftex.def Info: img/A/RodriguesRotation-2.pdf  used on input line 13.
 (pdftex.def)             Requested size: 483.69687pt x 683.64641pt.
+[2
 
+ <./img/A/RodriguesRotation-1.pdf>]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./img/A/RodriguesRotation-3.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/A/RodriguesRotation-3.pdf, id=78, 602.25pt x 851.18pt>
+<img/A/RodriguesRotation-3.pdf, id=74, 602.25pt x 851.18pt>
 File: img/A/RodriguesRotation-3.pdf Graphic file (type pdf)
 <use img/A/RodriguesRotation-3.pdf>
 Package pdftex.def Info: img/A/RodriguesRotation-3.pdf  used on input line 19.
 (pdftex.def)             Requested size: 483.69687pt x 683.64641pt.
-[4 <./img/A/RodriguesRotation-2.pdf>]
+[3 <./img/A/RodriguesRotation-2.pdf>]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./img/A/RodriguesRotation-4.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/A/RodriguesRotation-4.pdf, id=88, 602.25pt x 851.18pt>
+<img/A/RodriguesRotation-4.pdf, id=84, 602.25pt x 851.18pt>
 File: img/A/RodriguesRotation-4.pdf Graphic file (type pdf)
 <use img/A/RodriguesRotation-4.pdf>
 Package pdftex.def Info: img/A/RodriguesRotation-4.pdf  used on input line 25.
 (pdftex.def)             Requested size: 483.69687pt x 683.64641pt.
-[5 <./img/A/RodriguesRotation-3.pdf>]
+[4 <./img/A/RodriguesRotation-3.pdf>]
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 34
 .
 
@@ -888,7 +884,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [6 <./img/A/RodriguesRotation-4.pdf>]
+) [5 <./img/A/RodriguesRotation-4.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
 8.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -896,15 +892,15 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [7] [8])
-[9]
+) [6] [7])
+[8]
 
 LaTeX Warning: Citation `KURKA2019142' undefined on input line 82.
 
 No file IM563-Trabalho_2-Gabriel_Toffanetto.bbl.
 \openout2 = `anexos.aux'.
 
-(./anexos.tex) [10
+(./anexos.tex) [9
 
 
 
@@ -923,9 +919,9 @@ Package rerunfilecheck Info: File `IM563-Trabalho_2-Gabriel_Toffanetto.out' has
 (rerunfilecheck)             Checksum: 4E7AF8FF288378C3ED1BAE52D4112B69;422.
  ) 
 Here is how much of TeX's memory you used:
- 18627 strings out of 480186
- 310029 string characters out of 5894355
- 979464 words of memory out of 5000000
+ 18626 strings out of 480186
+ 310022 string characters out of 5894355
+ 979461 words of memory out of 5000000
  36160 multiletter control sequences out of 15000+600000
  484955 words of font info for 67 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
@@ -950,11 +946,11 @@ t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb>
-Output written on IM563-Trabalho_2-Gabriel_Toffanetto.pdf (10 pages, 3855160 by
-tes).
+Output written on IM563-Trabalho_2-Gabriel_Toffanetto.pdf (9 pages, 3854485 byt
+es).
 PDF statistics:
- 526 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 521 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
  94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

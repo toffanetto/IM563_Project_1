@@ -1,4 +1,8 @@
 \babel@toc {brazilian}{}\relax 
-\contentsline {section}{\numberline {1}}{2}{section.1}%
-\contentsline {section}{Anexos}{3}{section.1}%
-\contentsline {section}{Referências}{3}{section.1}%
+\contentsline {section}{\numberline {1}A}{3}{section.1}%
+\contentsline {section}{\numberline {2}B}{7}{section.2}%
+\contentsline {section}{\numberline {3}C}{8}{section.3}%
+\contentsline {section}{\numberline {4}D}{8}{section.4}%
+\contentsline {section}{\numberline {5}E}{9}{section.5}%
+\contentsline {section}{Anexos}{10}{equation.5.17}%
+\contentsline {section}{Referências}{10}{equation.5.17}%

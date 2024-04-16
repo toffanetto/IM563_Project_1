@@ -121,26 +121,26 @@ Sendo a matriz de parâmetros intrínsecos ($\+A$) dada por \eqref{eq:A}.
 	\end{bmatrix}
 \end{equation}
 
-Onde tem-se que:
+Onde tem-se que, considerando os eixos de projeção no centro da matriz da imagem:
 
 \begin{align}
 	s_x &= \frac{M}{L_x} \\
 	s_y &= \frac{N}{L_y} \\
-	u_0 &= 0 \\
-	v_0 &= 0 
+	u_0 &= \texttt{floor}\left(\frac{M}{2}\right)  \\
+	v_0 &= \texttt{floor}\left(\frac{N}{2}\right)  
 \end{align}
 
 Dessa forma, obtém-se $\widehat{\+q}_1$ e $\widehat{\+q}_1$:
 
 \begin{align}
 	\widehat{\+q}_1 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_1\right) = \begin{bmatrix}
-		27\\
-		69\\
+		347\\
+		309\\
 		1
 	\end{bmatrix}  \text{ (pixel)}\\
 	\widehat{\+q}_2 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_2\right)  = \begin{bmatrix}
-		9\\
-		23\\
+		329\\
+		263\\
 		1
 	\end{bmatrix}  \text{ (pixel)}
 \end{align}

@@ -31,9 +31,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{B}
 
-Sendo um ponto descrito no sistema de coordenadas \{1\}, dado por $\+p_1 = \left[ 1 \ 2 \ 3 \right]^T$ (m), o mesmo pode ser escrito em outro sistema de referências desde que se saiba qual é a translação e a rotação entre esses dois sistemas de referência.
+Sendo um ponto descrito no sistema de coordenadas \{1\}, dado por $\+p_1 = \left[ 0,03 \ -0,01 \ 30 \right]^T$ (m), o mesmo pode ser escrito em outro sistema de referências desde que se saiba qual é a translação e a rotação entre esses dois sistemas de referência.
 
-Uma vez que a translação entre o sistema de referência \{1\} e \{2\} é dado por $\+t = \left[1 \ 2 \ 15 \right]^T$, e a rotação $\{\phi, \theta, \psi\} = \{2^\circ, 1^\circ, 2^\circ\}$, pode-se escrever o ponto no \textit{frame} \{2\} conforme \eqref{eq:transform}.
+Uma vez que a translação entre o sistema de referência \{1\} e \{2\} é dado por \\ $\+t = \left[0,01 \ -0,02 \ -0,3 \right]^T$, e a rotação $\{\phi, \theta, \psi\} = \{2^\circ, 1^\circ, 2^\circ\}$, pode-se escrever o ponto no \textit{frame} \{2\} conforme \eqref{eq:transform}.
 
 \begin{equation}\label{eq:transform}
 	\+p_2 = \+R(\{\phi, \theta, \psi\})\+p_1 + \+t
@@ -73,9 +73,9 @@ Executando a transformação, obteve-se a representação \eqref{eq:p2} do ponto
 
 \begin{equation}\label{eq:p2}
 	\+p_2 = \begin{bmatrix}
-		2.02157298 \\
-		4.06908819\\
-		17.94537989
+		-0.4468 \\
+		 1.0336 \\
+		29.6780
 	\end{bmatrix}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,18 +87,18 @@ Dados as representações do ponto $\+p_1$ e $\+p_2$, ambos podem ser representa
 	\+q = \+p\frac{f}{p_z}
 \end{equation}
 
-Sendo $f = 0,05$ m, têm-se que:
+Sendo $f = 0,01$ m, têm-se que:
 
 \begin{align}
 	\+q_1 &= \begin{bmatrix}
-		0.01667 \\
-		0.03333 \\
-		0.05 \\
+		0.00001 \\
+		-0.0000033 \\
+		0.01 \\
 	\end{bmatrix} \text{ (m)} \\
 	\+q_2 &= \begin{bmatrix}
-	0.00563\\
-	0.01134\\
-	0.05      \\
+	-0.00015\\
+	0.00035\\
+	0.01      \\
 	\end{bmatrix} \text{ (m)} 
 \end{align}
 
@@ -134,13 +134,13 @@ Dessa forma, obtém-se $\widehat{\+q}_1$ e $\widehat{\+q}_1$:
 
 \begin{align}
 	\widehat{\+q}_1 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_1\right) = \begin{bmatrix}
-		347\\
-		309\\
+		330\\
+		236\\
 		1
 	\end{bmatrix}  \text{ (pixel)}\\
 	\widehat{\+q}_2 &= \texttt{floor}\left(\frac{1}{f}\+A\+q_2\right)  = \begin{bmatrix}
-		329\\
-		263\\
+		159\\
+		588\\
 		1
 	\end{bmatrix}  \text{ (pixel)}
 \end{align}
@@ -148,9 +148,7 @@ Dessa forma, obtém-se $\widehat{\+q}_1$ e $\widehat{\+q}_1$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{E}
 
-Relacionando o ponto no mundo com sua projeção no plano da imagem, como feito em \eqref{eq:pq}, pode-se substituir o ponto projetado para obter diretamente a coordenada do mundo em coordenadas de imagem, como em \eqref{eq:qqhat}.
-
-Isolando $\+p$ em \eqref{eq:qqhat}, obtém-se em \eqref{eq:pqqhat} a transformação de reprojeção, do ponto em coordenadas de imagem para coordenadas do mundo.
+Relacionando o ponto no mundo com sua projeção no plano da imagem, como feito em \eqref{eq:pq}, pode-se substituir o ponto projetado para obter diretamente a coordenada do mundo em coordenadas de imagem, como em \eqref{eq:qqhat}. Isolando $\+p$ em \eqref{eq:qqhat}, obtém-se em \eqref{eq:pqqhat} a transformação de reprojeção, do ponto em coordenadas de imagem para coordenadas do mundo.
 
 \begin{equation}\label{eq:pq}
 	\+q = \frac{f}{p_z}\+p 
@@ -170,17 +168,17 @@ Dessa forma, foi possível reprojetar os pontos $\+p_1$ e $\+p_2$, obtendo os re
 
 \begin{equation}\label{eq:repp1}
 	\widehat{\+p}_1 = \+A^{-1}\widehat{\+q_1}p_{1_z} = \begin{bmatrix}
-		0.972\\
-		  1.987\\
-		   3
+		0.028\\
+		  -0.012\\
+		   30
 	\end{bmatrix}
 \end{equation}
 
 \begin{equation}\label{eq:repp2}
 	\widehat{\+p}_2 = \+A^{-1}\widehat{\+q_2}p_{2_z} = \begin{bmatrix}
-	1.938 \\
-	 3.962 \\
-	 17.945
+	-0.4479 \\
+	 1.0328 \\
+	 29.678
 \end{bmatrix}
 \end{equation}
 
@@ -190,4 +188,5 @@ O erro de reprojeção foi calculado com base na média da distância euclidiana
 	e = \frac{1}{N}\sum_{i=1}^{N}||\+{e_i}||_2 = \frac{1}{N}\sum_{i=1}^{N}||\+p_i - \widehat{\+p_i}||_2
 \end{equation}
 
-Para os pontos recuperados, o erro médio foi de 0,083.
+Para os pontos recuperados, o erro médio foi de 0.002077. 
+O erro teórico se dá pela imprecisão da representação discreta em pixels, onde o valor real apresenta uma incerteza $\pm 0.5 \cdot \left[1 \ 1 \ 0\right]^T$, o que para o problema causa uma incerteza métrica de $\pm \left[0.0014 \ 0.0015 \ 0\right]^T$. Sendo o erro médio encontrado é igual à norma euclidiana dessa incerteza métrica.

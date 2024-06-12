@@ -40,8 +40,8 @@ A matriz de rotação e o vetor de translação entre a câmera e o sistema de c
 
 \begin{equation}
 	\+T = \begin{bmatrix}
-		\+R_{[3\times 3]} & \overrightarrow{t}_{[3\times 1]} \\
-		\overrightarrow{0}_{[1\times 3]} & 1
+	&	\+R_{[3\times 3]} & & \vec{t}_{[3\times 1]} \\
+		0 & 0 & 0 & 1
 	\end{bmatrix}_{[4\times 4]}
 	\label{eq:th}
 \end{equation}
@@ -50,8 +50,8 @@ Para a transformação entre os \textit{frames} $\{2\}$ e $\{1\}$, tem-se \eqref
 
 \begin{equation}
 \+T_{2/1} = \begin{bmatrix}
-	\+R_{2/1} & \overrightarrow{t}_{2/1} \\
-	\overrightarrow{0} & 1
+	& \+R_{2/1} & & \vec{t}_{2/1} \\
+	0 & 0 & 0 & 1
 \end{bmatrix}
 \label{eq:th21}
 \end{equation}

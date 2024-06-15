@@ -1,6 +1,6 @@
 \babel@toc {brazilian}{}\relax 
 \contentsline {section}{\numberline {1}Calibração Intrínseca}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Obtenção de pontos}{2}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Transformação entre às câmeras}{2}{section.2}%
-\contentsline {section}{Anexos}{4}{equation.2.4}%
-\contentsline {section}{Referências}{4}{equation.2.4}%
+\contentsline {section}{\numberline {2}Transformação entre às câmeras}{4}{section.2}%
+\contentsline {section}{Anexos}{6}{equation.2.17}%
+\contentsline {section}{Referências}{6}{equation.2.17}%

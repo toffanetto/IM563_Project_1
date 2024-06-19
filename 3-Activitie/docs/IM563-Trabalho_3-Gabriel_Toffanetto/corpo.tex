@@ -8,7 +8,7 @@ Para realização da calibração intrínseca da câmera, foram tomadas duas cap
 	\begin{subfigure}[H]{0.49\textwidth}
 		\includegraphics[width = \textwidth]{../../data/i7_L.jpg}
 		\caption{Vista esquerda.}
-		\label{fig:i7_L}
+		\label{fig:i7_L}4
 	\end{subfigure}
 	\begin{subfigure}[H]{0.49\textwidth}
 		\centering
@@ -24,9 +24,9 @@ Para realização da calibração intrínseca da câmera, foram tomadas duas cap
 A definição dos pontos do sólido de calibração que serão utilizados para a calibração é crucial, tendo sido realizado de forma manual por meio do \textit{software} de edição de imagens Adobe Photoshop. Os pontos são enumerados para corresponder ao vetor de pontos conhecidos utilizados na função de calibração, sendo o sistema global de coordenadas tendo origem no ponto $\mathit{1}$ e os eixos definidos nas direções:
 
 \begin{align}
-	\text{Eixo } z \equiv \overrightarrow{\mathit{1} \to \mathit{6}} \\
-	\text{Eixo } x \equiv \overrightarrow{\mathit{1} \to \mathit{2}} \\
-	\text{Eixo } y \equiv \overrightarrow{\mathit{1} \to \mathit{7}}
+	\text{Eixo } x \equiv \overrightarrow{\mathit{1} \to \mathit{2}} \\ 
+	\text{Eixo } y \equiv \overrightarrow{\mathit{1} \to \mathit{7}} \\
+	\text{Eixo } z \equiv \overrightarrow{\mathit{1} \to \mathit{6}}
 \end{align}
 
 O ponto oculto foi estimado por meio da projeção das arestas ocultas do sólido, por meio do paralelismo com as arestas visíveis, onde o ponto de interseção foi aproximado como o oitavo vértice do paralelepípedo.
@@ -82,6 +82,8 @@ Dados os pontos em coordenadas de mundo do sólido de calibração, em metros, d
 		1   & 1   & 1   & 1   & 1   & 1   & 1   & 1 
 	\end{bmatrix}
 \end{equation}
+
+\subsection{Realização da calibração intrínseca}
 
 Com a aplicação da função de calibração intrínseca \texttt{RTAa()}, obtém-se a matriz de parâmetros intrínsecos aproximada ($\mathbf{\hat{A}}$), a matriz de rotação aproximada ($\mathbf{\hat{R}}$) e o vetor de translação aproximado ($\mathbf{\hat{t}}$), sendo os dois últimos em relação à câmera e o sistema de coordenadas do mundo, ou seja, serão diferentes para cada uma das imagens.
 
@@ -217,7 +219,7 @@ Com isso, de acordo com \eqref{eq:tfLR}, têm-se que, a transformação do refer
 	\end{bmatrix}
 \end{equation}
 
-Explicitando as matrizes de rotação e vetores de translação entre às cameras:
+Explicitando as matrizes de rotação e vetores de translação entre às câmeras:
 
 \begin{gather}
 	\+{\hat{R}}_{L/R} = \begin{bmatrix}
@@ -245,3 +247,11 @@ Explicitando as matrizes de rotação e vetores de translação entre às camera
 
 \clearpage
 \section{Conclusão}
+
+Ao realizar a calibração intrínseca, observa-se que as realizações da matriz de parâmetros intrínsecos para as duas câmeras apresentam uma variação considerável, e que as coordenadas do centro optico em coordenadas de imagem, que pode ser obtido conhecendo o tamanho da imagem, se aproxima mais para a realização da câmera da direita, porém apresenta maior erro para a câmera da esquerda. Porém, ao realizar a média das duas realizações da matriz $\+{\hat{A}}$, obtém-se uma estimativa melhor para os parâmetros intrinsecos da câmera.
+
+Dentre as causas da divergência da estimação obtida com o que se esperava basea-se primeiramente no método de obtenção de pontos. Dada as dimensões da caixa, e o traçado das arestas visíveis, o ponto oculto foi estimado por meio da estimação das arestas ocultas por paralelismo com as arestas visíveis, buscando manter também a noção de perspectiva das arestas. Além disso, os pontos foram tomados manualmente, e a caixa não apresentava arestas e vertices "afiados", permitindo uma incenteza ao traçar as linhas e tomar os pontos das interceções. Somado à isso, as coordenadas de câmera apresentam mais uma incerteza ao representar de forma discreta os pixels, onde no campo receptivo de cada pixel, todos os pontos presentes no mesmo serão representados pela mesma coordenada de imagem.
+
+Dessa forma, popõem-se que para a melhor realização da calibração intrínseca, sejam capturadas inúmeras imagens do mesmo sólido, de ângulos diferentes, de forma que a média de todas as realizações da matriz de parâmetros intrínsecos representar com maior fidelidade a câmera, e com isso filtrar as incertezas que ocorrem durante o processo de calibração.
+
+Para obtenção da transformação entre às câmeras, o uso de transformações homogêneas foi apenas um truque matemático para facilitar a concatenação de transformações de referencial e inversão das mesmas, onde translação e rotação são considerados simuntaneamente. Dessa forma, no caso de um sistema de câmeras estéreo, tal transofrmação pode ser utilizada para a reconstrução 3D da cena, ou no caso de um sistema monoocular em movimento, a calibração intrínseca se faz util para obter a rotação e a translação do sistema do instante de captura de uma imagem até o proximo, realizando assim o procedimento de odometria visual.

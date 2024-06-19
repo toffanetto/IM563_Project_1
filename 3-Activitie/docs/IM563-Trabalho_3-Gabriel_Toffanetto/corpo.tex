@@ -1,7 +1,7 @@
 
 \section{Calibração Intrínseca}
 
-Para realização da calibração intrínseca da câmera, foram tomadas duas capturas de um objeto de calibração, sendo essa, uma caixa conhecida com 275 mm de altura, 87 mm de largura e 150 mm de profundidade. A \autoref{fig:i7_L} apresenta a vista esquerda da caixa, enquanto na \autoref{fig:i7_R} foi capturada a vista direita do objeto.
+Para realização da calibração intrínseca da câmera, foram tomadas duas capturas de um objeto de calibração, sendo essa, uma caixa conhecida com 275 mm de altura, 87 mm de largura e 150 mm de profundidade. A \autoref{fig:i7_L} apresenta a vista esquerda da caixa, enquanto na \autoref{fig:i7_R} foi capturada a vista direita do objeto. Ambas as imagens foram capturadas pela mesma câmera, tendo tamanho de $640 \times 480$ pixels.
 
 \begin{figure}[H]
 	\centering
@@ -47,14 +47,40 @@ O ponto oculto foi estimado por meio da projeção das arestas ocultas do sólid
 	\caption{Imagens de calibração com pontos conhecidos do mundo destacados.}
 \end{figure}
 
-Os pontos foram amostrados manualmente da imagem com os eixos, utilizando a função \texttt{getpts} do \textsc{Matlab}, resultando em dois vetores, com as coordenadas $x$ e $y$ de cada ponto. Dado as coordenadas, os mesmos foram utilizados para montar a matriz de pontos de calibração, com o mesmo padrão mostrado em \eqref{eq:mpoints}, sendo \texttt{ceil()} a função de truncamento para obtenção da coordenada de imagem do ponto, sendo obtida uma matriz de pontos para cada imagem.
+Os pontos foram amostrados manualmente da imagem com os eixos, utilizando a função \texttt{getpts} do \textsc{Matlab}, resultando em dois vetores, com as coordenadas $x$ e $y$ de cada ponto. Dado as coordenadas, os mesmos foram utilizados para montar a matriz de pontos de calibração, com o mesmo padrão mostrado em \eqref{eq:mpoints}, sendo \texttt{ceil()} a função de truncamento para obtenção da coordenada de imagem do ponto, sendo obtida uma matriz de pontos para cada imagem. A notação com subscrito $L$ será adotada para as equações relativas à imagem da vista esquerda, e o subscrito $R$ para a vista direita.
 
 \begin{equation}\label{eq:mpoints}
-	\+p = \begin{bmatrix}
+	\+{\hat{p}} = \begin{bmatrix}
 		\texttt{ceil(}\vec{x}\texttt{)}_{[1 \times 8]} \\
 		\texttt{ceil(}\vec{y}\texttt{)}_{[1 \times 8]} \\
 		\mathbf{1}
 	\end{bmatrix}_{[3 \times 8]}
+\end{equation}
+
+Dados os pontos em coordenadas de mundo do sólido de calibração, em metros, dado por \eqref{eq:B}, obteve-se as matrizes com os pontos relativos em coordenadas de imagem para a imagem da vista esquerda, \eqref{eq:pL}, e para a vista direita, \eqref{eq:pR}.
+
+\begin{equation} \label{eq:B}
+	\+B = \begin{bmatrix}
+			0 & 0.087 & 0.087 & 0.087 & 0     & 0     & 0     & 0.087 \\
+			0 & 0     & 0.150 & 0.150 & 0.150 & 0     & 0.150 & 0     \\
+			0 & 0     & 0     & 0.275 & 0.275 & 0.275 & 0     & 0.275
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation} \label{eq:pL}
+	\+{\hat{p}}_L = \begin{bmatrix}
+		334 & 412 & 486 & 575 & 470 & 350 & 416 & 472 \\
+		377 & 423 & 302 & 89  & 50  & 180 & 265 & 235 \\
+		1   & 1   & 1   & 1   & 1   & 1   & 1   & 1  
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation} \label{eq:pR}
+	\+{\hat{p}}_R = \begin{bmatrix}
+		256 & 312 & 424 & 407 & 331 & 169 & 366 & 242 \\
+		378 & 428 & 317 & 121 & 86  & 203 & 282 & 253 \\
+		1   & 1   & 1   & 1   & 1   & 1   & 1   & 1 
+	\end{bmatrix}
 \end{equation}
 
 Com a aplicação da função de calibração intrínseca \texttt{RTAa()}, obtém-se a matriz de parâmetros intrínsecos aproximada ($\mathbf{\hat{A}}$), a matriz de rotação aproximada ($\mathbf{\hat{R}}$) e o vetor de translação aproximado ($\mathbf{\hat{t}}$), sendo os dois últimos em relação à câmera e o sistema de coordenadas do mundo, ou seja, serão diferentes para cada uma das imagens.
@@ -62,52 +88,51 @@ Com a aplicação da função de calibração intrínseca \texttt{RTAa()}, obté
 Para a vista esquerda (\autoref{fig:i7_L_axis}), foram obtidas as seguintes matrizes:
 
 \begin{gather}\label{eq:ve}
-\hat{\+A}_L = \begin{bmatrix}
-	582.1562 & 0        & 853.3215 \\
-	0        & 680.1808 & 561.4679 \\
+\+{\hat{A}}_L = \begin{bmatrix}
+	630.8066 & 0        & 426.9824 \\
+	0        & 634.6096 & 216.9257 \\
 	0        & 0        & 1  
-\end{bmatrix}; \\ \ \hat{\+R}_L = \begin{bmatrix}
-	0.7061  &  0.1509  &  0.6919 \\
-	0.3502  & -0.9236  & -0.1559 \\
-	0.6155  &  0.3524  & -0.7050
-\end{bmatrix}; \ \hat{\+t}_L = \begin{bmatrix}
-	-0.0657 \\
-	 0.2558 \\
-	-0.7038
+\end{bmatrix}; \\ \ \+{\hat{R}}_L = \begin{bmatrix}
+	0.8682  & 0.4806  & 0.1239  \\
+	0.4416  & -0.6343 & -0.6345 \\
+	-0.2263 & 0.6055  & -0.7630
+\end{bmatrix}; \ \+{\hat{t}}_L = \begin{bmatrix}
+	0.1366 \\
+	-0.2138 \\
+	0.5406
 \end{bmatrix};  \label{eq:rtL}
 \end{gather}
 
 Para a vista direita (\autoref{fig:i7_R_axis}), foram obtidas as seguintes matrizes:
 
 \begin{gather}\label{eq:vd}
-	\hat{\+A}_R = \begin{bmatrix}
-	623.9344 & 0        & 322.8278 \\
-	0        & 585.1104 & 182.6302 \\
-	0        & 0        & 1.0000
-	\end{bmatrix}; \\ \ \hat{\+R}_R = \begin{bmatrix}
-	0.6818  &  0.7061 &  -0.1912 \\
-	0.4016  & -0.5797 &  -0.7090 \\
-	-0.6114 &  0.4066 &  -0.6788
-	\end{bmatrix}; \ \hat{\+t}_R = \begin{bmatrix}
-	 0.3196 \\
-	-0.0838 \\
-	 0.5338
+	\+{\hat{A}}_R = \begin{bmatrix}
+	648.0318 & 0        & 330.0854 \\
+	0        & 607.4200 & 200.7036 \\
+	0        & 0        & 1
+	\end{bmatrix}; \\ \ \+{\hat{R}}_R = \begin{bmatrix}
+	0.6871  & 0.7023  & -0.1861 \\
+	0.4168  & -0.5909 & -0.6908 \\
+	-0.5951 & 0.3971  & -0.6987
+	\end{bmatrix}; \ \+{\hat{t}}_R = \begin{bmatrix}
+	0.3318 \\
+	-0.0902 \\
+	0.5437
 	\end{bmatrix}; \label{eq:rtR}
 \end{gather}
 
 Por fim, para uma melhor realização da matriz de parâmetros intrínsecos aproximada, tira-se a média das duas aproximações obtidas, tendo então:
 
 \begin{equation}\label{eq:amed}
-	\hat{\+A} = \begin{bmatrix}
-		603.0453 & 0        & 588.0747 \\
-		0        & 632.6456 & 372.0490 \\
-		0        & 0        & 1.0000
-		
+	\+{\hat{A}} = \begin{bmatrix}
+		639.4192 & 0        & 378.5339 \\
+		0        & 621.0148 & 208.8146 \\
+		0        & 0        & 1 		
 	\end{bmatrix}
 \end{equation}
 
 
-
+\clearpage
 \section{Transformação entre às câmeras}
 
 A matriz de rotação e o vetor de translação entre a câmera e o sistema de coordenadas do mundo podem ser representadas na forma de transformações homogêneas, que compactam a informação de rotação e translação, sendo construída com base em \eqref{eq:th}.
@@ -124,7 +149,7 @@ Para a transformação entre dois \textit{frames} $\{2\}$ e $\{1\}$ quaisquer, t
 
 \begin{equation}
 \+T_{2/1} = \begin{bmatrix}
-	& \+R_{2/1} & & \+v{t}_{2/1} \\
+	& \+R_{2/1} & & \+{t}_{2/1} \\
 	0 & 0 & 0 & 1
 \end{bmatrix}
 \label{eq:th21}
@@ -139,35 +164,35 @@ De acordo com a propriedade algébrica das transformações homogêneas, a trans
 Dessa forma, uma vez que se conhece a transformação da câmera na vista esquerda para o sistema do mundo, e a transformação da câmera na vista direita para o sistema do mundo, a tranformação entre as duas câmeras pode ser encontrada da forma \eqref{eq:tfLR}.
 
 \begin{equation}
-	\+T_{R/L} = \+T_{R/0}\+T_{0/L} =  \+T_{R/0}\+T_{L/0}^{-1}
+	\+{\hat{T}}_{R/L} = \+{\hat{T}}_{R/0}\+{\hat{T}}_{0/L} =  \+{\hat{T}}_{R/0}\+{\hat{T}}_{L/0}^{-1}
 	\label{eq:tfLR}
 \end{equation}
 
-Com base em \eqref{eq:rtL}, pode-se escrever a transformação homogênea da câmera L para o sistema de coordenadas do mundo como \eqref{eq:TL}
+Com base em \eqref{eq:rtL}, pode-se escrever a transformação homogênea da câmera $L$ para o sistema de coordenadas do mundo como \eqref{eq:TL}.
 
 \begin{equation}\label{eq:TL}
-	\+T_{L/0} = \begin{bmatrix}
-		& \hat{\+R}_L & & \hat{\+t}_L\\
+	\+{\hat{T}}_{L/0} = \begin{bmatrix}
+		& \+{\hat{R}}_L & & \+{\hat{t}}_L\\
 		0 & 0 & 0 & 1
 	\end{bmatrix} = \begin{bmatrix}
-	0.7061  &  0.1509  &  0.6919 & -0.0657 \\
-	0.3502  & -0.9236  & -0.1559 & 0.2558  \\
-	0.6155  &  0.3524  & -0.705  & -0.7038 \\
-	0       &  0      &   0      & 1
+	0.8682  & 0.4806  & 0.1239  & 0.1366  \\
+	0.4416  & -0.6343 & -0.6345 & -0.2138 \\
+	-0.2263 & 0.6055  & -0.7630 & 0.5406  \\
+	0       & 0       & 0       & 1  
 \end{bmatrix}
 \end{equation}  
 
-E por meio da \eqref{eq:rtR}, pode-se escrever a transformação homogênea da câmera R para o sistema de coordenadas do mundo como \eqref{eq:TR}
+E por meio da \eqref{eq:rtR}, pode-se escrever a transformação homogênea da câmera $R$ para o sistema de coordenadas do mundo como \eqref{eq:TR}.
 
 \begin{equation}\label{eq:TR}
- 	\+T_{R/0} = \begin{bmatrix}
- 		& \hat{\+R}_R & & \hat{\+t}_R\\
+ 	\+{\hat{T}}_{R/0} = \begin{bmatrix}
+ 		& \+{\hat{R}}_R & & \+{\hat{t}}_R\\
  		0 & 0 & 0 & 1
  	\end{bmatrix} = \begin{bmatrix}
- 	0.6818  &  0.7061 &  -0.1912 & 0.3196  \\
- 	0.4016  & -0.5797 &  -0.7090 & -0.0838 \\
- 	-0.6114 &  0.4066 &  -0.6788 & 0.5338  \\
- 	0       &  0      &   0      & 1
+ 	0.6871  & 0.7023  & -0.1861 & 0.3318  \\
+ 	0.4168  & -0.5909 & -0.6908 & -0.0902 \\
+ 	-0.5951 & 0.3971  & -0.6987 & 0.5437  \\
+ 	0       & 0       & 0       & 1
  \end{bmatrix}
 \end{equation} 
 
@@ -175,19 +200,48 @@ E por meio da \eqref{eq:rtR}, pode-se escrever a transformação homogênea da c
 Com isso, de acordo com \eqref{eq:tfLR}, têm-se que, a transformação do referencial da câmera da esquerda para a câmera da direta é expressa por \eqref{eq:tfL2R} e a transformação da câmera da direta para a câmera da esquerda é dada por \eqref{eq:tfR2L}.
 
 \begin{equation}\label{eq:tfL2R}
-	\+T_{L/R} = \begin{bmatrix}
-		0.2457  &  0.5458  & -0.8011 &   0.9148 \\
-		-0.4834 &  0.7853  &  0.3867 &   0.8080 \\
-		0.8402  &  0.2922  &  0.4568 &  -0.5530 \\
-		0       &  0       &  0      &   1
+	\+{\hat{T}}_{L/R} = \begin{bmatrix}
+		0.9153  & 0.2589 & -0.3085 & 0.2233  \\
+		-0.2945 & 0.9527 & -0.0743 & 0.0173  \\
+		0.2747  & 0.1589 & 0.9483  & -0.0566 \\
+		0       & 0      & 0       & 1   
 	\end{bmatrix}
 \end{equation}
 
 \begin{equation}\label{eq:tfR2L}
-	\+T_{R/L} = \begin{bmatrix}
-		0.2457  &  -0.4834 &  0.8402  &  0.6304 \\
-		0.5458  &  0.7853  &  0.2922  & -0.9722 \\
-		-0.8011 &  0.3867  &  0.4568  &  0.6730 \\
-		0       &  0       &  0       &  1
+	\+{\hat{T}}_{R/L} = \begin{bmatrix}
+		0.9153  & -0.2945 & 0.2747 & -0.1838 \\
+		0.2589  & 0.9527  & 0.1589 & -0.0653 \\
+		-0.3085 & -0.0743 & 0.9483 & 0.1239  \\
+		0       & 0       & 0      & 1
 	\end{bmatrix}
 \end{equation}
+
+Explicitando as matrizes de rotação e vetores de translação entre às cameras:
+
+\begin{gather}
+	\+{\hat{R}}_{L/R} = \begin{bmatrix}
+		0.9153  & 0.2589 & -0.3085 \\
+		-0.2945 & 0.9527 & -0.0743 \\
+		0.2747  & 0.1589 & 0.9483 
+	\end{bmatrix}; \ \+{\hat{t}}_{L/R} = \begin{bmatrix}
+		0.2233 \\
+		0.0173 \\
+		-0.0566
+	\end{bmatrix};
+\end{gather}
+
+\begin{gather}
+\+{\hat{R}}_{R/L} = \begin{bmatrix}
+	0.9153  & -0.2945 & 0.2747 \\
+	0.2589  & 0.9527  & 0.1589 \\
+	-0.3085 & -0.0743 & 0.9483
+\end{bmatrix}; \ \+{\hat{t}}_{R/L} = \begin{bmatrix}
+	-0.1838 \\
+	-0.0653 \\
+	0.1239
+\end{bmatrix}; 
+\end{gather}
+
+\clearpage
+\section{Conclusão}
